@@ -8,29 +8,30 @@ export default class ExpenseForm extends Component {
         description: '',
         note: '',
         amount: '',
-        createdAt: moment().locale('fr'),
+        createdAt: moment(),
         calendarFocused: false
     };
 
     onDescriptionChange = (e) => {
         const description = e.target.value;
         this.setState({ description })
-    }
+    };
 
-    onTextChange = e => {
+    onTextChange = (e) => {
         const note = e.target.value;
         this.setState({ note })
-    }
+    };
 
-    onAmountChange = e => {
+    onAmountChange = (e) => {
         const amount = e.target.value;
         if (amount.match(/^\d*(\.\d{0,2})?$/)) {
             this.setState({ amount });
         }
-    }
-    onDateChange = (createdAt) => this.setState({ createdAt });
+    };
 
-    onFocusedChange = ({ focused }) => this.setState({ calendarFocused: focused });
+    onDateChange = (createdAt) => { this.setState(() => { createdAt }) };
+
+    onFocusedChange = ({ focused }) => { this.setState(() => { calendarFocused: focused }) };
 
     render() {
         return (
@@ -44,26 +45,27 @@ export default class ExpenseForm extends Component {
                         onChange={this.onDescriptionChange}
                     />
                     <input
-                        type="number"
+                        type="text"
                         placeholder="Amount"
-                        autoFocus
                         value={this.state.amount}
                         onChange={this.onAmountChange}
+                    />
+                    <SingleDataPicker
+                        date={this.state.createdAt}
+                        onDateChange={this.onDateChange}
+                        focused={this.state.calendarFocused}
+                        onFocusedChange={this.onFocusedChange}
+                        numberOfMonths={1}
+                        isOutsideRange={() => false}
                     />
                     <textarea
                         placeholder="Ajouter un commentaire sur cette dépense 💸"
                         onChange={this.onTextChange}
                     >
                     </textarea>
-                    <SingleDataPicker
-                        date={this.state.createdAt}
-                        onDateChange={this.onDateChange}
-                        focused={this.state.calendarFocused}
-                        onFocusedChange={this.onFocusedChange}
-                    />
                     <button>Ajouter une dépense</button>
                 </form>
             </div>
-        );
+        )
     }
 }
