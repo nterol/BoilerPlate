@@ -11,7 +11,7 @@ export default (state = expenseDefaultState, action) => {
                 if (e.id === action.id) {
                     return { ...e, ...action.updates }
                 } else
-                    return state;
+                    return e;
             })
         default:
             return state;

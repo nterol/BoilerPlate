@@ -7,6 +7,6 @@ const DashBoard = () => (
         <ExpenseListFilters />
         <ExpenseList />
     </div>
-)
+);
 
 export default DashBoard;
