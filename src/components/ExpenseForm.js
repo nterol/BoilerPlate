@@ -76,6 +76,7 @@ export default class ExpenseForm extends React.Component {
                     />
                     <textarea
                         placeholder="Ajouter un commentaire sur cette dépense 💸"
+
                         onChange={this.onTextChange}
                     >
                     </textarea>

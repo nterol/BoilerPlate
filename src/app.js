@@ -8,19 +8,14 @@ import { setTextFilter } from './actions/filters';
 import getVisisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import './firebase/firebase';
 
 const store = configureStore();
-
-
-store.dispatch(addExpense({ description: 'Beer' }))
-store.dispatch(addExpense({ description: 'Water Bill', amount: 5000 }));
-store.dispatch(addExpense({ description: 'Gas bill', amount: 1500 }));
-store.dispatch(addExpense({ description: 'rent', createdAt: 1000, amount: 200 }))
 
 store.subscribe(() => {
     const state = store.getState();
     const visible = getVisisibleExpenses(state.expenses, state.filters);
-    console.log(visible);
+
 })
 
 // setTimeout(() => {
