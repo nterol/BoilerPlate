@@ -20,6 +20,7 @@
     "css-loader": "0.28.4",
     "firebase": "^4.11.0",
     "live-server": "^1.2.0",
+    "lodash": "^4.17.10",
     "moment": "^2.18.1",
     "node-sass": "4.5.3",
     "normalize.css": "7.0.0",
